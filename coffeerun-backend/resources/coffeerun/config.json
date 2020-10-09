@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"Email": {
+			"name": "Email",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "Email",
+			"order": 0
+		},
+		"FlavorShot": {
+			"name": "FlavorShot",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "FlavorShot",
+			"order": 1
+		},
+		"CaffeineRating": {
+			"name": "CaffeineRating",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "CaffeineRating",
+			"order": 2
+		},
+		"Size": {
+			"name": "Size",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "Size",
+			"order": 3
+		}
+	}
+}
