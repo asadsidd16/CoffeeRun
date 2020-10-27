@@ -11,20 +11,26 @@
         }
         createOrder(order) {
             console.log('Adding order for ' + order.emailAddress);
-            this.db.add(order.emailAddress, order);
+            return this.db.add(order.emailAddress, order);
         }
         deliverOrder(customerId) { 
             console.log('Delivering order for ' + customerId);
-            this.db.remove(customerId);
+            return this.db.remove(customerId);
         }
-        printOrders() {
-            var customerIdArray = Object.keys(this.db.getAll());
-        
-            console.log('Truck #' + this.truckId + ' has pending orders:');
-            customerIdArray.forEach(function (id) {
-              console.log(this.db.get(id));
+         printOrders(printfn) {
+            return this.db.getAll()
+            .then(function (orders) {
+                var customerIdArray = Object.keys(orders);
+
+                console.log(`Truck #${this.truckId} has pending orders:`);
+                customerIdArray.forEach(function(id) {
+                    console.log(orders[id]);
+                    if (printfn) { 
+                        printfn(orders[id]);
+                    }
+                }.bind(this));
             }.bind(this));
-          }
+        };
     }
 
     App.Truck = Truck;

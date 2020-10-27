@@ -8,13 +8,13 @@
             // console.log('running the DataStore function');
             this.data = {};
         }
-        add(key, val) { this.data[key] = val; }
+        async add(key, val) { this.data[key] = val; return null; }
 
-        get(key) { return this.data[key]; }
+        async get(key) { return this.data[key]; }
         
-        getAll() { return this.data; }
+        async getAll() { return this.data; }
         
-        remove(key) { delete this.data[key]; }
+        async remove(key) { delete this.data[key]; return null; }
     }
 
     App.DataStore = DataStore;

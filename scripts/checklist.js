@@ -16,27 +16,30 @@
           }
         }
 
-        addClickHandler(fn){
-            this.$element.on('click', 'input', function(event){
+        addClickHandler(fn) {
+            this.$element.on('click', 'input', function(event) {
                 var email = event.target.value;
-                this.removeRow(email);
-                fn(email);
-            }.bind(this));
-
+                fn(email)
+                    .then(function() {
+                        this.removeRow(email);
+                    }.bind(this));
+                }.bind(this));
         }
 
         addRow(coffeeOrder) {
             this.removeRow(coffeeOrder.emailAddress);
+
             var rowElement = new Row(coffeeOrder);
             this.$element.append(rowElement.$element);
         }
 
-        removeRow(email){
+        removeRow(email) { 
             this.$element.find('[value="' + email + '"]')
-                .closest('[data-coffee-order="checkbox"]')
-                .remove();
+                          .closest('[data-coffee-order="checkbox"]')
+                          .remove();
         }
     }
+
     class Row {
         constructor(coffeeOrder) {    
             // Constructor code will go here    
